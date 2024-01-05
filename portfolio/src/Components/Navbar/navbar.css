@@ -1,0 +1,41 @@
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 20px 40px;
+  color: #fff;
+
+  h4 {
+    cursor: pointer;
+  }
+}
+
+.nav a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* Add your other styles here */
+}
+
+.menu-container {
+  display: flex;
+  align-items: center;
+}
+
+.expanded-menu {
+  display: flex;
+  gap: 20px;
+  font-weight: 500;
+
+  a {
+    font-size: 13px;
+    text-transform: uppercase;
+  }
+}

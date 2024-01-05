@@ -1,0 +1,97 @@
+/* App.css */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+section {
+  scroll-snap-align: center;
+  height: 100vh;
+}
+
+html,
+body {
+  overflow-x: hidden;
+  height: 100%;
+  width: 100%;
+  background-color: black;
+}
+
+html {
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+}
+/* App.css */
+html.has-scroll-smooth {
+  overflow: hidden;
+}
+
+html.has-scroll-dragging {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.has-scroll-smooth body {
+  overflow: hidden;
+}
+
+.has-scroll-smooth [data-scroll-container] {
+  min-height: 100vh;
+}
+
+.hover-underline-animation {
+  position: relative;
+  padding-bottom: 5px;
+}
+
+.hover-underline-animation::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #fff;
+  transform-origin: bottom right;
+  transition: transform 0.2s ease-out;
+}
+
+.hover-underline-animation:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+.hover-underline-animation:hover > svg {
+  transform: rotate(45deg); /* Adjust the rotation angle as needed */
+  transition: transform 0.4s ease-in-out; /* Add a smooth transition effect */
+}
+
+@keyframes arrow {
+  0% {
+    margin-left: 0;
+  }
+  50% {
+    margin-left: 20px;
+  }
+  100% {
+    margin-left: 0;
+  }
+}
+
+.custom-cursor {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+}
+
+.cursorAnimation {
+  cursor: none;
+  animation: arrow 1s infinite; /* Adjust the duration as needed */
+}

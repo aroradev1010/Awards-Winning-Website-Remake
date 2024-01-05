@@ -1,0 +1,15 @@
+.secondMain {
+  width: 100%;
+}
+
+.custom-cursor {
+  position: fixed;
+  width: 15px; /* Set the width of your custom cursor */
+  height: 15px; /* Set the height of your custom cursor */
+  background-color: #fff; /* Set the background color of your custom cursor */
+  border-radius: 50%; /* Create a circular shape for your custom cursor */
+  mix-blend-mode: difference; /* Blend mode for better visibility on various backgrounds */
+  pointer-events: none; /* Ensure the custom cursor does not interfere with interactive elements */
+  transform: translate(-50%, -50%);
+  transition: transform 0.1s ease; /* Add a smooth transition effect */
+}
