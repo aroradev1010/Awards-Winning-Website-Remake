@@ -1,60 +1,80 @@
-import React, { useState } from "react";
+// import React, { useState } from "react";
+// import "./navbar.css";
+// import { motion } from "framer-motion";
+
+// function Navbar() {
+//   const [expandedMenu, setExpandedMenu] = useState(false);
+
+//   const toggleMenu = () => {
+//     setExpandedMenu(!expandedMenu);
+//   };
+
+//   return (
+//     <div className={`nav ${expandedMenu ? "expanded" : ""}`}>
+//       <div className="logo">
+//         <a href="">Dev Arora</a>
+//       </div>
+//       <div className="menu-container">
+//         {expandedMenu ? null : (
+//           <h4 className="hover-underline-animation" onClick={toggleMenu}>
+//             MENU+
+//           </h4>
+//         )}
+//         {expandedMenu && (
+//           <div className="expanded-menu">
+//             <a className="hover-underline-animation" href="#">
+//               Plug
+//             </a>
+//             <a className="hover-underline-animation" href="#">
+//               Ixperience
+//             </a>
+//             <a className="hover-underline-animation" href="#">
+//               Hudu
+//             </a>
+//             <a className="hover-underline-animation" href="#">
+//               playground
+//             </a>
+//             <a className="hover-underline-animation" href="#">
+//               Contact
+//             </a>
+//           </div>
+//         )}
+//       </div>
+//     </div>
+//   );
+// }
+
+// export default Navbar;
+
+import React, { useEffect, useRef, useState } from "react";
 import "./navbar.css";
-import { motion } from "framer-motion";
+import { motion, useAnimation, useInView } from "framer-motion";
 
-const variants = {
-  initial: {
-    y: -20,
-    opacity: 0,
-  },
-  animate: {
-    y: 0,
-    opacity: 1,
-    transition: {
-      duration: 1.5,
-      delay: 1,
-    },
-  },
-  exit: {
-    y: 20,
-    opacity: 0,
-    transition: {
-      duration: 0.2,
-    },
-  },
-};
-
-const linkVariants = {
-  initial: {
-    y: -20,
-    opacity: 0,
-  },
-  animate: {
-    y: 0,
-    opacity: 1,
-    transition: {
-      duration: 0.2,
-    },
-  },
+const menuVariants = {
+  hidden: { opacity: 0, y: -50 },
+  visible: { opacity: 0, y: 0 },
 };
 
 function Navbar() {
   const [expandedMenu, setExpandedMenu] = useState(false);
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
+  const mainControls = useAnimation();
+
+  useEffect(() => {
+    if (isInView) {
+      mainControls.start("visible");
+    }
+  }, [isInView]);
 
   const toggleMenu = () => {
     setExpandedMenu(!expandedMenu);
   };
 
   return (
-    <motion.div
-      className={`nav ${expandedMenu ? "expanded" : ""}`}
-      variants={variants}
-      initial="initial"
-      animate="animate"
-      exit="exit"
-    >
+    <div className={`nav ${expandedMenu ? "expanded" : ""}`}>
       <div className="logo">
-        <a href="">Dev Arora</a>
+        <a href="">DevArora</a>
       </div>
       <div className="menu-container">
         {expandedMenu ? null : (
@@ -63,26 +83,46 @@ function Navbar() {
           </h4>
         )}
         {expandedMenu && (
-          <motion.div className="expanded-menu" variants={linkVariants}>
-            <a href="#" className="hover-underline-animation">
+          <div>
+            <a
+              className="hover-underline-animation"
+              href="#"
+              variants={menuVariants}
+            >
               Plug
             </a>
-            <a href="#" className="hover-underline-animation">
+            <a
+              className="hover-underline-animation"
+              href="#"
+              variants={menuVariants}
+            >
               Ixperience
             </a>
-            <a href="#" className="hover-underline-animation">
+            <a
+              className="hover-underline-animation"
+              href="#"
+              variants={menuVariants}
+            >
               Hudu
             </a>
-            <a href="#" className="hover-underline-animation">
+            <a
+              className="hover-underline-animation"
+              href="#"
+              variants={menuVariants}
+            >
               playground
             </a>
-            <a href="#" className="hover-underline-animation">
+            <a
+              className="hover-underline-animation"
+              href="#"
+              variants={menuVariants}
+            >
               Contact
             </a>
-          </motion.div>
+          </div>
         )}
       </div>
-    </motion.div>
+    </div>
   );
 }
 
